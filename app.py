@@ -102,17 +102,24 @@ def callback():
 
         #get genre information from list of artists
         #update genre_counts dictionary
+
+        artist_ids_str = ""
+
         for a in artist_ids:
-            try:
-                genres_request = requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header)
-                genres = json.loads(genres_request.text)["genres"]
-                for g in genres:
-                    try:
-                        genre_counts[g] = genre_counts[g] + 1
-                    except KeyError:
-                        genre_counts[g] = 1
-            except KeyError:
-                print("Error at genre request " + str(genres_request))
+            artist_ids_str += a
+            artist_ids_str += ","
+        artist_ids_str = artist_ids_str[:-1]
+
+        genres_request = requests.get("http://api.spotify.com/v1/artists" + artist_ids_str, headers=authorization_header)
+        list_of_artists = json.load(genres_request.text)['artists']
+        for i in range(0,len(list_of_artists)):
+            genres = list_of_artists[i]["genres"]
+            for g in genres:
+                try:
+                    genre_counts[g] = genre_counts[g] + 1
+                except KeyError:
+                    genre_counts[g] = 1
+
         #update genres_dict with genre_counts dictionary
         genres_dict[year] = genre_counts
 
@@ -138,18 +145,23 @@ def callback():
             artist_counts[artist_name] = artist_counts[artist_name] + 1
         except KeyError:
             artist_counts[artist_name] = 1
-        
+
+    artist_ids_str = ""
     for a in artist_ids:
-        #update genres_dict with genre_counts dictionary
-        try:
-            genres = json.loads(requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header).text)["genres"]
-            for g in genres:
-                try:
-                    genre_counts[g] = genre_counts[g] + 1
-                except KeyError:
-                    genre_counts[g] = 1
-        except KeyError:
-            pass
+        artist_ids_str += a
+        artist_ids_str += ","
+    artist_ids_str = artist_ids_str[:-1]    
+
+    genres_request = requests.get("http://api.spotify.com/v1/artists" + artist_ids_str, headers=authorization_header)
+    list_of_artists = json.load(genres_request.text)['artists']
+
+    for i in range(0,len(list_of_artists)):
+        genres = list_of_artists[i]["genres"]
+        for g in genres:
+            try:
+                genre_counts[g] = genre_counts[g] + 1
+            except KeyError:
+                genre_counts[g] = 1
         
     genres_dict['2020'] = genre_counts
     songid_dict['2020'] = track_ids
@@ -166,17 +178,20 @@ def callback():
         loudness_sum = 0
         count = 0
 
-        for song in songid_dict[year]:
-            try:
-                count+=1
-                audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/"+song, headers=authorization_header)
-                audiofeatures = json.loads(audiofeatures_request.text)
-                danceability_sum+=audiofeatures['danceability']
-                valence_sum+=audiofeatures['valence']
-                tempo_sum+=audiofeatures['tempo']
-                loudness_sum+=audiofeatures['loudness']
-            except KeyError:
-                print("Error at audiofeatures request: " + str(audiofeatures_request))
+        songstr = ""
+        for i in songid_dict[year]:
+            songstr += i
+            songstr += ","
+        songstr = songstr[:-1]
+        audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/"+songstr,headers=authorization_header)
+        audiofeatures = json.load(audiofeatures_request.text)["audio_features"]
+        
+        for i in audiofeatures:
+            count += 1
+            danceability_sum += audiofeatures[i]["danceability"]
+            valence_sum += audiofeatures[i]["valence"]
+            tempo_sum += audiofeatures[i]["tempo"]
+            loudness_sum += audiofeatures[i]["loudness"]
 
         audio_dict = {'danceability':danceability_sum/count,'valence':valence_sum/count,'tempo':tempo_sum/count,'loudness':loudness_sum/count}
         audio_features[year]=audio_dict
