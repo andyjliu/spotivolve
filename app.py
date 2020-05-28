@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 cid = 'ebd8cac9845048d99aca6a20739b8f89'
 secret = 'c27e28a69a0d4f4c8682e99d248122c7'
-redirect_uri = "http://127.0.0.1:8080/callback/q"
+redirect_uri = "https://safe-river-55295.herokuapp.com/callback/q"
 scope = 'playlist-read-private user-top-read'
 
 auth_query_parameters = {
@@ -169,4 +169,4 @@ def callback():
     final_dict = {'audio_features':audio_features,'artists':artists_dict,'genres':genres_dict}
     return(final_dict)
 
-app.run(debug=True, port=8080)
+app.run(debug=True)
