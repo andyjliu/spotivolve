@@ -1,4 +1,3 @@
 Flask
 unicorn
-json
 requests
