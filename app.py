@@ -141,15 +141,14 @@ def callback():
         #update genres_dict with genre_counts dictionary
         try:
             genres = json.loads(requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header).text)["genres"]
+            for g in genres:
+                try:
+                    genre_counts[g] = genre_counts[g] + 1
+                except KeyError:
+                    genre_counts[g] = 1
         except KeyError:
             pass
-        for g in genres:
-            try:
-                genre_counts[g] = genre_counts[g] + 1
-            except KeyError:
-                genre_counts[g] = 1
         
-
     genres_dict['2020'] = genre_counts
     songid_dict['2020'] = track_ids
     artists_dict['2020'] = artist_counts
@@ -175,6 +174,7 @@ def callback():
                 loudness_sum+=audiofeatures['loudness']
             except KeyError:
                 pass
+
         audio_dict = {'danceability':danceability_sum/count,'valence':valence_sum/count,'tempo':tempo_sum/count,'loudness':loudness_sum/count}
         audio_features[year]=audio_dict
 
