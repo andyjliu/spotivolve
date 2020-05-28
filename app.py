@@ -45,10 +45,13 @@ def callback():
     post_request = requests.post("https://accounts.spotify.com/api/token", data=code_payload)
     response_data = json.loads(post_request.text)
 
-    access_token = response_data["access_token"]
-    refresh_token = response_data["refresh_token"]
-    token_type = response_data["token_type"]
-    expires_in = response_data["expires_in"]
+    try:
+        access_token = response_data["access_token"]
+        refresh_token = response_data["refresh_token"]
+        token_type = response_data["token_type"]
+        expires_in = response_data["expires_in"]
+    except KeyError:
+        print(str(post_request))
 
     authorization_header = {"Authorization": "Bearer {}".format(access_token)}
 
@@ -72,11 +75,15 @@ def callback():
         artist_counts = {}
 
         #get year playlist corresponds to, as well as list of tracks it contains
-        playlist_id = playlist_id.split(":")[-1]
-        playlist = json.loads(requests.get("https://api.spotify.com/v1/playlists/" + playlist_id, headers=authorization_header).text) 
-        year = playlist["name"].split(" ")[-1]
-        tracks = json.loads(requests.get("https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks", headers=authorization_header).text)
-        tracks = tracks["items"]
+        try:
+            playlist_id = playlist_id.split(":")[-1]
+            playlist_request = requests.get("https://api.spotify.com/v1/playlists/" + playlist_id, headers=authorization_header)
+            playlist = json.loads(playlist_request.text) 
+            year = playlist["name"].split(" ")[-1]
+            tracks = json.loads(requests.get("https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks", headers=authorization_header).text)
+            tracks = tracks["items"]
+        except KeyError:
+            print(str(playlist_request))
 
         #for each track in playlist:
         #add track_id and artist_id to appropriate lists
