@@ -116,8 +116,7 @@ def callback():
         artist_ids_str = artist_ids_str[:-1]'''
 
         genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
-        print(genres_request)
-        print(genres_request.text)
+
         try:
             print(genres_request.text["artists"])
         except Exception:
