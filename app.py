@@ -110,8 +110,10 @@ def callback():
 
     #get 2020 data from past six months' top tracks
     #limited to 50 tracks (playlists were 100 tracks long)
-    
-    this_year = json.loads(requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header).text)["items"]
+    try:
+        this_year = json.loads(requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header).text)["items"]
+    except KeyError:
+        this_year = json.loads(requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header).text)["items"]
 
     track_ids = []
     artist_ids = []
@@ -130,7 +132,10 @@ def callback():
         
     for a in artist_ids:
         #update genres_dict with genre_counts dictionary
-        genres = json.loads(requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header).text)["genres"]
+        try:
+            genres = json.loads(requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header).text)["genres"]
+        except KeyError:
+            pass
         for g in genres:
             try:
                 genre_counts[g] = genre_counts[g] + 1
