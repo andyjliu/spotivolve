@@ -107,7 +107,7 @@ def callback():
 
         #TODO: split into two even lists eventually instead of just taking first 50
         for a in range(50):
-            artist_ids_str += artists_ids[a]
+            artist_ids_str += artist_ids[a]
             artist_ids_str += ","
         artist_ids_str = artist_ids_str[:-1]
         '''for a in artist_ids:
@@ -188,7 +188,7 @@ def callback():
         for i in range(50):
             songstr += songid_dict[year][i]
             songstr += ","
-            
+
         songstr = songstr[:-1]
         audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/?ids="+songstr,headers=authorization_header)
         audiofeatures = json.load(audiofeatures_request.text)["audio_features"]
