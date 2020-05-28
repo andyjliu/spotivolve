@@ -169,4 +169,5 @@ def callback():
     final_dict = {'audio_features':audio_features,'artists':artists_dict,'genres':genres_dict}
     return(final_dict)
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
