@@ -105,7 +105,7 @@ def callback():
 
         artist_ids_str = ""
 
-        #TODO: split into two even lists eventually instead of just taking first 50
+        #TODO: split into even lists eventually instead of just taking first 50
         for a in range(50):
             artist_ids_str += artist_ids[a]
             artist_ids_str += ","
@@ -116,7 +116,10 @@ def callback():
         artist_ids_str = artist_ids_str[:-1]'''
 
         genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
+        print(genres_request)
         print(genres_request.text)
+        print(type(genres_request))
+        print(len(genres_request))
         list_of_artists = json.load(genres_request.text)["artists"]
         for i in range(0,len(list_of_artists)):
             genres = list_of_artists[i]["genres"]
