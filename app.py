@@ -110,7 +110,7 @@ def callback():
             artist_ids_str += ","
         artist_ids_str = artist_ids_str[:-1]
 
-        genres_request = requests.get("http://api.spotify.com/v1/artists/" + artist_ids_str, headers=authorization_header)
+        genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
         print(genres_request.text)
         list_of_artists = json.load(genres_request.text)["artists"]
         for i in range(0,len(list_of_artists)):
@@ -153,7 +153,7 @@ def callback():
         artist_ids_str += ","
     artist_ids_str = artist_ids_str[:-1]    
 
-    genres_request = requests.get("http://api.spotify.com/v1/artists/" + artist_ids_str, headers=authorization_header)
+    genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
     list_of_artists = json.load(genres_request.text)['artists']
 
     for i in range(0,len(list_of_artists)):
@@ -184,7 +184,7 @@ def callback():
             songstr += i
             songstr += ","
         songstr = songstr[:-1]
-        audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/"+songstr,headers=authorization_header)
+        audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/?ids="+songstr,headers=authorization_header)
         audiofeatures = json.load(audiofeatures_request.text)["audio_features"]
 
         for i in audiofeatures:
