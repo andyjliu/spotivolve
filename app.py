@@ -118,9 +118,9 @@ def callback():
         genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
 
         try:
-            print(genres_request.text["artists"])
+            print(json.load(genres_request))
         except Exception:
-            print(genres_request.text[0])
+            print(json.load(genres_request.text))
 
         list_of_artists = json.load(genres_request.text)["artists"]
         for i in range(0,len(list_of_artists)):
