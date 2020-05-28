@@ -51,7 +51,7 @@ def callback():
         token_type = response_data["token_type"]
         expires_in = response_data["expires_in"]
     except KeyError:
-        print(str(post_request))
+        print("Error on Access Token request: " + str(post_request))
 
     authorization_header = {"Authorization": "Bearer {}".format(access_token)}
 
@@ -83,7 +83,7 @@ def callback():
             tracks = json.loads(requests.get("https://api.spotify.com/v1/playlists/" + playlist_id + "/tracks", headers=authorization_header).text)
             tracks = tracks["items"]
         except KeyError:
-            print(str(playlist_request))
+            print("Error on playlist request: " + str(playlist_request))
 
         #for each track in playlist:
         #add track_id and artist_id to appropriate lists
@@ -104,23 +104,25 @@ def callback():
         #update genre_counts dictionary
         for a in artist_ids:
             try:
-                genres = json.loads(requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header).text)["genres"]
+                genres_request = requests.get("https://api.spotify.com/v1/artists/" + a, headers=authorization_header)
+                genres = json.loads(genres_request.text)["genres"]
                 for g in genres:
                     try:
                         genre_counts[g] = genre_counts[g] + 1
                     except KeyError:
                         genre_counts[g] = 1
             except KeyError:
-                pass
+                print("Error at genre request " + str(genres_request))
         #update genres_dict with genre_counts dictionary
         genres_dict[year] = genre_counts
 
     #get 2020 data from past six months' top tracks
     #limited to 50 tracks (playlists were 100 tracks long)
     try:
-        this_year = json.loads(requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header).text)["items"]
+        this_year_request = requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header)
+        this_year = json.loads(this_year_request.text)["items"]
     except KeyError:
-        this_year = json.loads(requests.get("https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=50&offset=0", headers=authorization_header).text)["items"]
+        print("Error at 2020 access: " + str(this_year_request))
 
     track_ids = []
     artist_ids = []
@@ -167,13 +169,14 @@ def callback():
         for song in songid_dict[year]:
             try:
                 count+=1
-                audiofeatures = json.loads(requests.get("https://api.spotify.com/v1/audio-features/"+song, headers=authorization_header).text)
+                audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/"+song, headers=authorization_header)
+                audiofeatures = json.loads(audiofeatures_request.text)
                 danceability_sum+=audiofeatures['danceability']
                 valence_sum+=audiofeatures['valence']
                 tempo_sum+=audiofeatures['tempo']
                 loudness_sum+=audiofeatures['loudness']
             except KeyError:
-                pass
+                print("Error at audiofeatures request: " + str(audiofeatures_request))
 
         audio_dict = {'danceability':danceability_sum/count,'valence':valence_sum/count,'tempo':tempo_sum/count,'loudness':loudness_sum/count}
         audio_features[year]=audio_dict
