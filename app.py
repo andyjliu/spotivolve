@@ -107,8 +107,11 @@ def callback():
 
         #TODO: split into even lists eventually instead of just taking first 50
         for a in range(50):
-            artist_ids_str += artist_ids[a]
-            artist_ids_str += ","
+            try:
+                artist_ids_str += artist_ids[a]
+                artist_ids_str += ","
+            except IndexError:
+                pass
         artist_ids_str = artist_ids_str[:-1]
         '''for a in artist_ids:
             artist_ids_str += a
