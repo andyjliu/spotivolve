@@ -117,12 +117,8 @@ def callback():
 
         genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
 
-        try:
-            print(json.load(genres_request))
-        except Exception:
-            print(json.load(genres_request.text))
+        list_of_artists = genres_request.json()["artists"]
 
-        list_of_artists = json.load(genres_request.text)["artists"]
         for i in range(0,len(list_of_artists)):
             genres = list_of_artists[i]["genres"]
             for g in genres:
@@ -164,7 +160,7 @@ def callback():
     artist_ids_str = artist_ids_str[:-1]    
 
     genres_request = requests.get("http://api.spotify.com/v1/artists?ids=" + artist_ids_str, headers=authorization_header)
-    list_of_artists = json.load(genres_request.text)['artists']
+    list_of_artists = genres_request.json()['artists']
 
     for i in range(0,len(list_of_artists)):
         genres = list_of_artists[i]["genres"]
@@ -196,14 +192,15 @@ def callback():
 
         songstr = songstr[:-1]
         audiofeatures_request = requests.get("https://api.spotify.com/v1/audio-features/?ids="+songstr,headers=authorization_header)
-        audiofeatures = json.load(audiofeatures_request.text)["audio_features"]
-
-        for i in audiofeatures:
+        
+        audiofeatures = audiofeatures_request.json()["audio_features"]
+        
+        for af in audiofeatures:
             count += 1
-            danceability_sum += audiofeatures[i]["danceability"]
-            valence_sum += audiofeatures[i]["valence"]
-            tempo_sum += audiofeatures[i]["tempo"]
-            loudness_sum += audiofeatures[i]["loudness"]
+            danceability_sum += af["danceability"]
+            valence_sum += af["valence"]
+            tempo_sum += af["tempo"]
+            loudness_sum += af["loudness"]
 
         audio_dict = {'danceability':danceability_sum/count,'valence':valence_sum/count,'tempo':tempo_sum/count,'loudness':loudness_sum/count}
         audio_features[year]=audio_dict
