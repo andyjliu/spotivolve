@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'px';
+    src: url('fonts/proximanovabold.ttf');
+  }
+body {
+    background-color: #1DB954;
+  }
+  h1 {
+    color: #FFFFFF;
+    font-family: 'px';
+  }
+  h2 {
+    color: #FFFFFF;
+    font-family: 'px';
+  }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Spotivolve</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+
+<center>
+<h1>In the year {{year}}, the average valence of your music was {{valence}}</h1>
+
+<form action="/formback" method="POST" value="back">
+    <p><input type="submit" value="Go Back"></p>
+</form>
+
+<form action="/formforward" method="POST" value="forward">
+    <p><input type="submit" value="Go Forward"></p>
+</form>
+</center>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, request, redirect, g, render_template
+from flask import Flask, request, redirect, g, render_template, url_for, session
 from urllib.parse import quote
 import json
 
@@ -21,6 +21,15 @@ auth_query_parameters = {
 
 @app.route("/")
 def index():
+    return(render_template("index.html"))
+
+@app.route("/form", methods=['GET', 'POST'])
+def form():
+    if request.method == 'POST':
+        return redirect(url_for('authorization'))
+
+@app.route("/authorization")
+def authorization():
     #Authorization
     url_args = "&".join(["{}={}".format(key, quote(val)) for key, val in auth_query_parameters.items()])
     auth_url = "{}/?{}".format("https://accounts.spotify.com/authorize", url_args)
@@ -253,7 +262,35 @@ def callback():
         display_dict[y]['artists'] = sorted(final_dict['artists'][y], key=final_dict['artists'][y].get, reverse=True)[:5]
         display_dict[y]['genres'] = sorted(final_dict['genres'][y], key=final_dict['genres'][y].get, reverse=True)[:5]
 
-    return(display_dict)
+    session['year'] = '2020'
+    session['display_dict'] = display_dict
+    session['latest_year'] = 2020
+    session['earliest_year'] = 2017
+    return(redirect(url_for('display')))
+
+@app.route("/display")
+def display():
+    y = session.get("year", None)
+    d = session.get("display_dict", None)
+    return(render_template("output.html", year=y, valence=d[y]['valence']))
+
+@app.route("/formback", methods=['GET', 'POST'])
+def formback():
+    if request.method == 'POST':
+        if int(session.get("year", None)) != session.get("earliest_year", None):
+            session['year'] = str(int(session.get("year", None)) - 1)
+            return redirect(url_for('display'))
+        else:
+            return redirect(url_for('display'))
+
+@app.route("/formforward", methods=['GET', 'POST'])
+def formforward():
+    if request.method == 'POST':
+        if int(session.get("year", None)) != session.get("latest_year", None):
+            session['year'] = str(int(session.get("year", None)) + 1)
+            return redirect(url_for('display'))
+        else:
+            return redirect(url_for('display'))
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
