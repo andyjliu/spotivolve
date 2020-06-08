@@ -8,14 +8,14 @@ body {
   h1 {
     color: #FFFFFF;
     font-family: 'px';
-    font-size: '64px';
+    font-size: 80px;
   }
   h2 {
     color: #FFFFFF;
     font-family: 'px';
-    font-size: '48px';
+    font-size: 48px;
   }
-  .submit {
+  button {
     background-color: #FFFFFF;
     border-radius: 25%;
     border: none;
