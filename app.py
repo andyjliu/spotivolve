@@ -4,6 +4,7 @@ from urllib.parse import quote
 import json
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 cid = 'ebd8cac9845048d99aca6a20739b8f89'
 secret = 'c27e28a69a0d4f4c8682e99d248122c7'
