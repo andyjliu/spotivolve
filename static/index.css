@@ -15,7 +15,7 @@ body {
     font-family: 'px';
     font-size: '48px';
   }
-  .button_img {
+  .submit {
     background-color: #FFFFFF;
     border-radius: 25%;
     border: none;
@@ -34,3 +34,12 @@ body {
     padding-left: 16px;     /* make text start to the right of the image */
     vertical-align: middle; /* align the text vertically centered */
   }
+
+div {
+    background: #1DB954;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left: -200px;
+}
