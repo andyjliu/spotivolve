@@ -15,7 +15,7 @@ body {
     font-family: 'px';
     font-size: 48px;
   }
-  button {
+  .button {
     background-color: #FFFFFF;
     border-radius: 25%;
     border: none;
