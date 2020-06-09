@@ -23,3 +23,8 @@ body {
       font-family: 'px';
       text-align: 'center'
   }
+  h5 {
+      color: #FFFFFF;
+      text-align: 'center';
+      font-style: 'italic'
+  }
