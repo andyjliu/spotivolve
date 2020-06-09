@@ -296,11 +296,11 @@ def display():
     else:
         energy_text = str(int(100-e)) + "%% lower"
 
-    d = 100*(d[y]['danceability'] - danceability_average)/(danceability_average)  
-    if d > 100:
-        danceability_text = str(int(d-100)) + "%% higher"
+    da = 100*(d[y]['danceability'] - danceability_average)/(danceability_average)  
+    if da > 100:
+        danceability_text = str(int(da-100)) + "%% higher"
     else:
-        danceability_text = str(int(100-d)) + "%% lower"
+        danceability_text = str(int(100-da)) + "%% lower"
 
     a = 100*(d[y]['acousticness'] - acousticness_average)/(acousticness_average)  
     if a > 100:
@@ -314,7 +314,7 @@ def display():
     image_urls = {}
 
     for feature in ["acousticness", "danceability", "energy", "valence"]:
-        img = StringIO.StringIO()
+        img = StringIO()
         years = []
         values = []
         for year in d.keys():
