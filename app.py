@@ -330,7 +330,7 @@ def display():
 
         image_urls[feature] = base64.b64encode(img.getvalue())
 
-    return(render_template("output.html", acousticness_url=image_urls['acousticness'], danceability_url=image_urls['danceability'], energy_url=image_urls['energy'], valence_url=image_urls['valence'], year=y, valence_text=valence_text, energy_text=energy_text, danceability_text = danceability_text,  acousticness_text = acousticness_text, artist1=art[0], artist2=art[1], artist3=art[2], artist4=art[3], artist5=art[4], genre1=gen[1], genre2=gen[2], genre3=gen[3], genre4=gen[4], genre5=gen[5]))
+    return(render_template("output.html", acousticness_url=image_urls['acousticness'], danceability_url=image_urls['danceability'], energy_url=image_urls['energy'], valence_url=image_urls['valence'], year=y, valence_text=valence_text, energy_text=energy_text, danceability_text = danceability_text,  acousticness_text = acousticness_text, artist1=art[0], artist2=art[1], artist3=art[2], artist4=art[3], artist5=art[4], genre1=gen[0], genre2=gen[1], genre3=gen[2], genre4=gen[3], genre5=gen[4]))
 
 @app.route("/formback", methods=['GET', 'POST'])
 def formback():
