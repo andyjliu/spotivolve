@@ -2,7 +2,7 @@ import requests
 from flask import Flask, request, redirect, g, render_template, url_for, session
 from urllib.parse import quote
 import json
-from io import BytesIO
+import io
 import base64
 import matplotlib.pyplot as plt
 import numpy as np
