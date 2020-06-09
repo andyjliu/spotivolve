@@ -314,7 +314,7 @@ def display():
     image_urls = {}
 
     for feature in ["acousticness", "danceability", "energy", "valence"]:
-        img = StringIO()
+        img = io.BytesIO()
         years = []
         values = []
         for year in d.keys():
