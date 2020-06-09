@@ -3,13 +3,23 @@
     src: url('fonts/proximanovabold.ttf');
   }
 body {
-    background-color: #1DB954;
+    background-color: #000000;
   }
   h1 {
     color: #FFFFFF;
     font-family: 'px';
+    text-align: 'center'
   }
   h2 {
     color: #FFFFFF;
     font-family: 'px';
+    text-align: 'center'}
+  h3 {
+      color: #FFFFFF;
+      font-family: 'px';
+      text-align: 'center'
+  }
+  h4 {
+      font-family: 'px';
+      text-align: 'center'
   }

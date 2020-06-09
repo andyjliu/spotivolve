@@ -2,19 +2,21 @@
 <html>
 
 <head>
+
 <title>Spotivolve</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
 </head>
 
 <body>
-<div>
 <center>
 <h1>SPOTIVOLVE</h1>
 <h2><i>Track the evolution of your music taste over time.</i></h2>
 
-<button formmethod="POST">Log In with Spotify</button>
+<form action="/form" method="POST">
+  <p><input type="submit" value="Log In With Spotify"></p>
+</form>
+
 </center>
-</div>
 </body>
 
 </html>

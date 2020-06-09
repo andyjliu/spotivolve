@@ -3,22 +3,68 @@
 
 <head>
 <title>Spotivolve</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+<link rel="stylesheet" type="text/css" href="./static/output.css">
 </head>
 
 <body>
 
-<center>
-<h1>In the year {{year}}, the average valence of your music was {{valence}}</h1>
-
-<form action="/formback" method="POST" value="back">
-    <p><input type="submit" value="Go Back"></p>
+<div width=100% style="white-space:nowrap;background-color:#000000">
+<div width=20%>
+<form action="/formback" method="POST" value="back" style="float:left">
+        <p><input type="submit" value="Go Back"></p>
 </form>
-
-<form action="/formforward" method="POST" value="forward">
+</div><div width=60% style="display:inline">
+<center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
+</div><div width=20%>
+<form action="/formforward" method="POST" value="forward" style="display:inline">
     <p><input type="submit" value="Go Forward"></p>
 </form>
-</center>
+</div>
+</div>
 
+<div width=100%>
+    <div style="float:left; width: 50%;text-align:center;background-color:#1DB954">
+    <img src="data:image/png;base64, {{ valence_url }}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{valence_text}} positive</h3></center>
+    </div>
+
+    <div style="float:right; width: 50%;text-align:center;background-color:#1DB954">
+    <img src="data:image/png;base64, {{ danceability_url }}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{danceability_text}} danceable</h3></center>
+    </div>
+</div>
+
+<div width=100%>
+    <div style="float:left; width: 50%;text-align:center;background-color:#1DB954">
+    <img src="data:image/png;base64, {{ energy_url }}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{energy_text}} energetic</h3></center>
+    </div>
+
+    <div style="float:right; width: 50%;text-align:center;background-color:#1DB954">
+    <img src="data:image/png;base64, {{acousticness_url}}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{acousticness_text}} acoustic</h3></center>
+    </div>
+</div>
+<div style="white-space: nowrap; height:300px; width:100%; clear:both">
+
+    <div style="width:49.5%;display:inline-block;margin:1px">
+        <div style="background-color:#1DB954"><h2 style="color:#FFFFFF;padding:5px">Top Artists</h2></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist1}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist2}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist3}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist4}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist5}}</h4></div>
+    </div>
+
+    <div style="width:49.5%;display:inline-block;float:right;margin:1px">
+        <div style="background-color: #FFFFFF"><h2 style="color:#1DB954;padding:5px">Top Genres</h2></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre1}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre2}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre3}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre4}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre5}}</h4></div>
+    </div>
+
+</div>
 </body>
 </html>

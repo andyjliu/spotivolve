@@ -2,18 +2,14 @@ import requests
 from flask import Flask, request, redirect, g, render_template, url_for, session
 from urllib.parse import quote
 import json
-import StringIO
-import base64
-import matplotlib.pyplot as plt
-import numpy as np
-import seaborn as sns
+import operator
 
 app = Flask(__name__)
 app.secret_key = "super secret key"
 
-cid = 'ebd8cac9845048d99aca6a20739b8f89'
-secret = 'c27e28a69a0d4f4c8682e99d248122c7'
-redirect_uri = "https://safe-river-55295.herokuapp.com/callback/q"
+cid = '8d06ac9a17164adba9091e64af93354a'
+secret = '44782f30e2c24bb9bb5845692ab9d773'
+redirect_uri = "http://127.0.0.1:8080/callback/q"
 scope = 'playlist-read-private user-top-read'
 
 auth_query_parameters = {
@@ -24,6 +20,7 @@ auth_query_parameters = {
     # "show_dialog": SHOW_DIALOG_str,
     "client_id": cid
 }
+
 
 @app.route("/")
 def index():
@@ -267,70 +264,19 @@ def callback():
         display_dict[y]['energy'] = final_dict['audio_features'][y]['energy']
         display_dict[y]['artists'] = sorted(final_dict['artists'][y], key=final_dict['artists'][y].get, reverse=True)[:5]
         display_dict[y]['genres'] = sorted(final_dict['genres'][y], key=final_dict['genres'][y].get, reverse=True)[:5]
-
+    
     session['year'] = '2020'
     session['display_dict'] = display_dict
     session['latest_year'] = 2020
     session['earliest_year'] = 2017
+    print(display_dict)
     return(redirect(url_for('display')))
 
 @app.route("/display")
 def display():
     y = session.get("year", None)
     d = session.get("display_dict", None)
-
-    valence_average = 0.5059
-    energy_average = 0.6121
-    danceability_average = 0.5746
-    acousticness_average = 0.2204
-
-    v = 100*(d[y]['valence'] - valence_average)/(valence_average)
-    if v > 100:
-        valence_text = str(int(v-100)) + "%% higher"
-    else:
-        valence_text = str(int(100-v)) + "%% lower"
-
-    e = 100*(d[y]['energy'] - energy_average)/(energy_average)  
-    if e > 100:
-        energy_text = str(int(e-100)) + "%% higher"
-    else:
-        energy_text = str(int(100-e)) + "%% lower"
-
-    d = 100*(d[y]['danceability'] - danceability_average)/(danceability_average)  
-    if d > 100:
-        danceability_text = str(int(d-100)) + "%% higher"
-    else:
-        danceability_text = str(int(100-d)) + "%% lower"
-
-    a = 100*(d[y]['acousticness'] - acousticness_average)/(acousticness_average)  
-    if a > 100:
-        acousticness_text = str(int(a-100)) + "%% higher"
-    else:
-        acousticness_text = str(int(100-a)) + "%% lower"
-
-    art = d[y]['artists']
-    gen = d[y]['genres']
-
-    image_urls = {}
-
-    for feature in ["acousticness", "danceability", "energy", "valence"]:
-        img = StringIO.StringIO()
-        years = []
-        values = []
-        for year in d.keys():
-            years.append(year)
-            values.append(d[year][feature])
-
-        sns.set_style("whitegrid", {'axes.grid' : False})
-        plt.plot(years, values)
-        plt.scatter(years[2], values[2], color="green")
-        plt.savefig(img, format='png')
-        plt.close()
-        img.seek(0)
-
-        image_urls[feature] = base64.b64encode(img.getvalue())
-
-    return(render_template("output.html", acousticness_url=image_urls['acousticness'], danceability_url=image_urls['danceability'], energy_url=image_urls['energy'], valence_url=image_urls['valence'], year=y, valence_text=valence_text, energy_text=energy_text, danceability_text = danceability_text,  acousticness_text = acousticness_text, artist1=art[0], artist2=art[1], artist3=art[2], artist4=art[3], artist5=art[4], genre1=gen[1], genre2=gen[2], genre3=gen[3], genre4=gen[4], genre5=gen[5]))
+    return(render_template("output.html", year=y, valence=d[y]['valence']))
 
 @app.route("/formback", methods=['GET', 'POST'])
 def formback():
@@ -350,5 +296,6 @@ def formforward():
         else:
             return redirect(url_for('display'))
 
-if __name__ == '__main__':
-    app.run(debug=True, use_reloader=True)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=8080)

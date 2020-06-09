@@ -1,3 +1,7 @@
 Flask
 gunicorn
 requests
+matplotlib
+numpy
+seaborn
+StringIO

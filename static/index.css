@@ -5,6 +5,25 @@
 body {
     background-color: #1DB954;
   }
+  input {
+    background-color: #FFFFFF;
+    border-radius: 25%;
+    border: none;
+    color: #1DB954;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    background-image: url('images/Spotify_Icon_CMYK_Green.png'); /* 16px x 16px */
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: 0px 0px;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle; /* align the text vertically centered */
+  }
   h1 {
     color: #FFFFFF;
     font-family: 'px';
@@ -15,31 +34,3 @@ body {
     font-family: 'px';
     font-size: 48px;
   }
-  .button {
-    background-color: #FFFFFF;
-    border-radius: 25%;
-    border: none;
-    color: #1DB954;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 24px;
-    background-image: url('/images/Spotify_Icon_Green_Uncoated.pdf'); /* 16px x 16px */
-    background-color: transparent; /* make the button transparent */
-    background-repeat: no-repeat;  /* make the background image appear only once */
-    background-position: 0px 0px;  /* equivalent to 'top left' */
-    border: none;           /* assuming we don't want any borders */
-    cursor: pointer;        /* make the cursor like hovering over an <a> element */
-    height: 16px;           /* make this the size of your image */
-    padding-left: 16px;     /* make text start to the right of the image */
-    vertical-align: middle; /* align the text vertically centered */
-  }
-
-div {
-    background: #1DB954;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -100px;
-    margin-left: -200px;
-}
