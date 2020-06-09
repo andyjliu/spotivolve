@@ -271,7 +271,11 @@ def callback():
     session['year'] = '2020'
     session['display_dict'] = display_dict
     session['latest_year'] = 2020
-    session['earliest_year'] = 2017
+    minyear = 2021
+    for i in display_dict.keys():
+        if int(i) < minyear:
+            minyear = int(i)
+    session['earliest_year'] = minyear
     return(redirect(url_for('display')))
 
 @app.route("/display")
