@@ -323,7 +323,7 @@ def display():
 
         sns.set_style("whitegrid", {'axes.grid' : False})
         plt.plot(years, values)
-        plt.scatter(years[2], values[2], color="green")
+        plt.scatter(years[int(y) - 2021], values[int(y) - 2021], color="green")
         plt.savefig(img, format='png')
         plt.close()
         img.seek(0)
