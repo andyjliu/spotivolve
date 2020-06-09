@@ -2,6 +2,10 @@
     font-family: 'px';
     src: url('fonts/proximanovabold.ttf');
   }
+@font-face {
+    font-family: 'px-italic';
+    src: url('fonts/proximanovaitalics.otf')
+}
 body {
     background-color: #000000;
   }
@@ -26,6 +30,5 @@ body {
   h5 {
       color: #FFFFFF;
       text-align: 'center';
-      font-family: 'px';
-      font-style: 'italic'
+      font-family: 'px-italic';
   }

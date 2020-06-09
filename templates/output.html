@@ -11,13 +11,13 @@
 <div width=100% style="white-space:nowrap;background-color:#000000">
 <div width=20%>
 <form action="/formback" method="POST" value="back" style="float:left">
-        <p><input type="image" width="10px" height="10px" src="{{url_for('static', filename='leftarrow.svg')}}"></p>
+        <p><input type="image" width="30px" height="30px" src="{{url_for('static', filename='leftarrow.svg')}}"></p>
 </form>
 </div><div width=60% style="display:inline">
 <center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
-</div><div width=20%>
+</div><div width=15%>
 <form action="/formforward" method="POST" value="forward" style="display:inline">
-    <p><input type="image" width="15px" height="15px" src="{{url_for('static', filename='rightarrow.svg')}}"></p>
+    <p><input type="image" width="30px" height="30px" src="{{url_for('static', filename='rightarrow.svg')}}"></p>
 </form>
 </div>
 </div>
@@ -46,27 +46,27 @@
     <div style="float:right; width: 50%;text-align:center;background-color:#1DB954">
     <img src="data:image/png;base64, {{acousticness_url}}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{acousticness_text}} acoustic</h3>
-    <h5>Acousticness describes how many more acoustic elements a song has, as opposed to electric.</h5></center>
+    <h5>Acousticness describes how many more elements of a song are acoustic, as opposed to electric. Songs with a higher score are more likely to be acoustic.</h5></center>
     </div>
 </div>
 <div style="white-space: nowrap; height:300px; width:100%; clear:both">
 
     <div style="width:49.5%;display:inline-block;margin:1px">
         <div style="background-color:#1DB954"><h2 style="color:#FFFFFF;padding:5px">Top Artists</h2></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist1}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist2}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist3}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist4}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">{{artist5}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">1. {{artist1}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">2. {{artist2}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">3. {{artist3}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">4. {{artist4}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">5. {{artist5}}</h4></div>
     </div>
 
     <div style="width:49.5%;display:inline-block;float:right;margin:1px">
         <div style="background-color: #FFFFFF"><h2 style="color:#1DB954;padding:5px">Top Genres</h2></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre1}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre2}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre3}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre4}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">{{genre5}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">1. {{genre1}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">2. {{genre2}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">3. {{genre3}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">4. {{genre4}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">5. {{genre5}}</h4></div>
     </div>
 
 </div>
