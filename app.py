@@ -284,29 +284,29 @@ def display():
     danceability_average = 0.5746
     acousticness_average = 0.2204
 
-    v = 100*(d[y]['valence'] - valence_average)/(valence_average)
+    v = 100*(float(d[y]['valence']))/(valence_average)
     if v > 100:
-        valence_text = str(int(v-100)) + "%% higher"
+        valence_text = str(int(v-100)) + str(chr(37)) + " more"
     else:
-        valence_text = str(int(100-v)) + "%% lower"
+        valence_text = str(int(100-v)) + str(chr(37)) + " less"
 
-    e = 100*(d[y]['energy'] - energy_average)/(energy_average)  
+    e = 100*(float(d[y]['energy']))/(energy_average)  
     if e > 100:
-        energy_text = str(int(e-100)) + "%% higher"
+        energy_text = str(int(e-100)) + str(chr(37)) + " more"
     else:
-        energy_text = str(int(100-e)) + "%% lower"
+        energy_text = str(int(100-e)) + str(chr(37)) + " less"
 
-    da = 100*(d[y]['danceability'] - danceability_average)/(danceability_average)  
+    da = 100*(float(d[y]['danceability']))/(danceability_average)  
     if da > 100:
-        danceability_text = str(int(da-100)) + "%% higher"
+        danceability_text = str(int(da-100)) + str(chr(37)) + " more"
     else:
-        danceability_text = str(int(100-da)) + "%% lower"
+        danceability_text = str(int(100-da)) + str(chr(37)) + " less"
 
-    a = 100*(d[y]['acousticness'] - acousticness_average)/(acousticness_average)  
+    a = 100*(float(d[y]['acousticness']))/(acousticness_average)  
     if a > 100:
-        acousticness_text = str(int(a-100)) + "%% higher"
+        acousticness_text = str(int(a-100)) + str(chr(37)) + " more"
     else:
-        acousticness_text = str(int(100-a)) + "%% lower"
+        acousticness_text = str(int(100-a)) + str(chr(37)) + " less"
 
     art = d[y]['artists']
     gen = d[y]['genres']
@@ -328,7 +328,7 @@ def display():
         plt.close()
         img.seek(0)
 
-        image_urls[feature] = base64.b64encode(img.getvalue())
+        image_urls[feature] = urllib.parse.quote(base64.b64encode(img.read()).decode())
 
     return(render_template("output.html", acousticness_url=image_urls['acousticness'], danceability_url=image_urls['danceability'], energy_url=image_urls['energy'], valence_url=image_urls['valence'], year=y, valence_text=valence_text, energy_text=energy_text, danceability_text = danceability_text,  acousticness_text = acousticness_text, artist1=art[0], artist2=art[1], artist3=art[2], artist4=art[3], artist5=art[4], genre1=gen[0], genre2=gen[1], genre3=gen[2], genre4=gen[3], genre5=gen[4]))
 
