@@ -7,14 +7,13 @@ body {
   }
   input {
     border-radius: 25%;
-    color: #FFFFFF;
+    color: #1DB954;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 24px;
     font-family: 'px';
-    background-image: url('images/Spotify_Icon_CMYK_Green.png'); /* 16px x 16px */
-    background-color: transparent; /* make the button transparent */
+    background-color: #FFFFFF; /* make the button transparent */
     background-repeat: no-repeat;  /* make the background image appear only once */
     background-position: 0px 0px;  /* equivalent to 'top left' */
     border: none;           /* assuming we don't want any borders */
