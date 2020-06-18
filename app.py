@@ -324,8 +324,8 @@ def display():
         for year in d.keys():
             years.append(year)
             values.append(d[year][feature])
-
-        sns.set_style("whitegrid", {'axes.grid' : False, 'axes.facecolor':'#1DB954', 'axes.edgecolor':'#3A1DB9', 'axes.spines.left': True, 'axes.spines.bottom': False, 'axes.spines.right': False, 'axes.spines.top': False})
+        sns.set_style("whitegrid", {'axes.grid' : False})
+        #sns.set_style("whitegrid", {'axes.grid' : False, 'axes.facecolor':'#1DB954', 'axes.edgecolor':'#3A1DB9', 'axes.spines.left': True, 'axes.spines.bottom': False, 'axes.spines.right': False, 'axes.spines.top': False})
         plt.plot(years, values)
         plt.scatter(years[int(y) - 2021], values[int(y) - 2021], color="white")
         plt.savefig(img, format='png')
