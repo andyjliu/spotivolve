@@ -8,16 +8,15 @@
 
 <body>
 
-<div width=100% style="white-space:nowrap;background-color:#000000;overflow:hidden">
+<div width=100% style="white-space:nowrap;background-color:#000000;overflow:hidden;align:center">
 <div width=20% style="display:inline-block">
 <form action="/formback" method="POST" value="back" style="float:left">
-        <p><input type="image" width="30px" height="30px" src="{{url_for('static', filename='leftarrow.svg')}}"></p>
+        <input type="image" width="30px" height="30px" src="{{url_for('static', filename='leftarrow.svg')}}">
 </form>
-</div><div width=60% style="display:inline-block">
-<center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
+</div><div width=55% style="display:inline-block"><center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
 </div><div width=20% style="display:inline-block">
 <form action="/formforward" method="POST" value="forward" style="display:inline">
-    <p><input type="image" width="30px" height="30px" src="{{url_for('static', filename='rightarrow.svg')}}"></p>
+    <input type="image" width="30px" height="30px" src="{{url_for('static', filename='rightarrow.svg')}}">
 </form>
 </div>
 </div>
@@ -50,7 +49,7 @@
     </div>
 </div>
 <div style="white-space: nowrap; height:300px; width:100%; clear:both">
-
+    <center>
     <div style="width:49.5%;display:inline-block;margin:1px">
         <div style="background-color:#1DB954"><h2 style="color:#FFFFFF;padding:5px">Top Artists</h2></div>
         <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">1. {{artist1}}</h4></div>
@@ -68,7 +67,7 @@
         <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">4. {{genre4}}</h4></div>
         <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">5. {{genre5}}</h4></div>
     </div>
-
+    </center>
 </div>
 </body>
 </html>
