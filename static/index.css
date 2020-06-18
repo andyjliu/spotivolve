@@ -5,9 +5,10 @@
 body {
     background-color: #1DB954;
   }
-  input {
+  input#image-button {
     border-radius: 25%;
     color: #1DB954;
+    background: #ccc url('static/Spotify_Icon_CMYK_Green.png') no-repeat top left;
     text-align: center;
     text-decoration: none;
     display: inline-block;
