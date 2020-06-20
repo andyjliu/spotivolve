@@ -9,40 +9,40 @@
 <body>
 
 <div width=100% style="white-space:nowrap;background-color:#000000;overflow:hidden;margin:auto;text-align:center">
-<div width=10% style="display:inline-block">
+<div width=20% style="display:inline-block">
 <form action="/formback" method="POST" value="back" style="float:left">
         <input type="image" width="30px" height="30px" src="{{url_for('static', filename='leftarrow.svg')}}">
 </form>
-</div><div width=80% style="display:inline-block"><center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
-</div><div width=10% style="display:inline-block">
+</div><div width=55% style="display:inline-block"><center><h2>In the year {{year}}, your music (compared to the average Spotify user) was</h2></center>
+</div><div width=20% style="display:inline-block">
 <form action="/formforward" method="POST" value="forward" style="display:inline">
     <input type="image" width="30px" height="30px" src="{{url_for('static', filename='rightarrow.svg')}}">
 </form>
 </div>
 </div>
 
-<div style="width:100%;white-space:nowrap">
-    <div style="padding:10px;width:50%;text-align:center;background-color:#1DB954;display:inline-block">
+<div width=100%>
+    <div style="float:left; width: 50%;text-align:center;background-color:#1DB954">
     <img src="data:image/png;base64, {{ valence_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{valence_text}} happy</h3>
     <h5>Valence (positivity) describes how happy, cheerful, and euphoric a track feels, while tracks with low valence tend to sound sad, depressed, or angry.</h5></center>
     </div>
 
-    <div style="padding:10px;width: 50%;text-align:center;background-color:#1DB954;display:inline-block">
+    <div style="float:right; width: 50%;text-align:center;background-color:#1DB954">
     <img src="data:image/png;base64, {{ danceability_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{danceability_text}} danceable</h3>
         <h5>Danceability describes how suitable a track is for dancing based on its tempo, rhythm stability, and beat strength.</h5></center>
     </div>
 </div>
 
-<div width=100% style="white-space:nowrap">
-    <div style="padding:10px;width: 50%;text-align:center;background-color:#1DB954;display:inline-block">
+<div width=100%>
+    <div style="float:left; width: 50%;text-align:center;background-color:#1DB954">
     <img src="data:image/png;base64, {{ energy_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{energy_text}} energetic</h3>
     <h5>Energy describes how fast, loud, and noisy a track feels. For example, death metal has high energy, while a Bach prelude scores low on the scale.</h5></center>
     </div>
 
-    <div style="padding:10px;width: 50%;text-align:center;background-color:#1DB954;display:inline-block">
+    <div style="float:right; width: 50%;text-align:center;background-color:#1DB954">
     <img src="data:image/png;base64, {{acousticness_url}}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{acousticness_text}} acoustic</h3>
     <h5>Acousticness describes how many more elements of a song are acoustic, as opposed to electric. Songs with a higher score are more likely to be acoustic.</h5></center>
