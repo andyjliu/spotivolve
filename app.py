@@ -13,7 +13,7 @@ app.secret_key = "super secret key"
 
 cid = 'ebd8cac9845048d99aca6a20739b8f89'
 secret = 'c27e28a69a0d4f4c8682e99d248122c7'
-redirect_uri = "https://safe-river-55295.herokuapp.com/callback/q"
+redirect_uri = "https://spotivolve.herokuapp.com/callback/q"
 scope = 'playlist-read-private user-top-read'
 
 auth_query_parameters = {
