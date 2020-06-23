@@ -33,3 +33,20 @@ body {
       text-align: 'center';
       font-family: 'px-italic';
   }
+  .nav {
+    background-color:#000000;
+    overflow:hidden;
+    margin:auto;
+    text-align:center
+  }
+  .graph_boxes {
+    width:50%;
+    text-align:center;
+    background-color:#1DB954;
+    padding:20px 0px
+  }
+  .bottom_boxes {
+    width:49.5%;
+    display:inline-block;
+    margin:1px
+  }

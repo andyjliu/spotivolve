@@ -17,7 +17,7 @@
 
 <body>
 
-<div width=100% style="background-color:#000000;overflow:hidden;margin:auto;text-align:center">
+<div width=100% class="nav">
 <div width=10%>
 <form action="/formback" method="POST" value="back" style="float:left">
         <input type="image" width="50px" height="50px" src="{{url_for('static', filename='leftarrow.svg')}}">
@@ -31,14 +31,14 @@
 </div>
 
 <div width=100% style="display:flex">
-    <div style="float:left;width:50%;text-align:center;background-color:#1DB954;padding:20px 0px">
+    <div class="graph_boxes" float="left">
     <img src="data:image/png;base64, {{ valence_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{valence_text}} happy</h3>
     <h5>Valence (positivity) describes how happy, cheerful, and euphoric a track feels, while tracks with low valence tend to sound sad, depressed, or angry.</h5></center>
     <br><br><br>
 </div>
 
-    <div style="float:right;width:50%;text-align:center;background-color:#1DB954;padding:20px 0px">
+    <div class="graph_boxes" float="right">
     <img src="data:image/png;base64, {{ danceability_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{danceability_text}} danceable</h3>
         <h5>Danceability describes how suitable a track is for dancing based on its tempo, rhythm stability, and beat strength.</h5></center>
@@ -46,13 +46,13 @@
 </div>
 
 <div width=100% style="display:flex">
-    <div style="float:left;width:50%;text-align:center;background-color:#1DB954;padding:20px 0px">
+    <div class="graph_boxes" float="left">
     <img src="data:image/png;base64, {{ energy_url }}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{energy_text}} energetic</h3>
     <h5>Energy describes how fast, loud, and noisy a track feels. For example, death metal has high energy, while a Bach prelude scores low on the scale.</h5></center>
     </div>
 
-    <div style="float:right;width:50%;text-align:center;background-color:#1DB954;padding:20px 0px">
+    <div class="graph_boxes" float="right">
     <img src="data:image/png;base64, {{acousticness_url}}" width=60% height=60% style="vertical-align:top">
     <center><h3>{{acousticness_text}} acoustic</h3>
     <h5>Acousticness describes how many more elements of a song are acoustic, as opposed to electric. Songs with a higher score are more likely to be acoustic.</h5></center>
@@ -60,7 +60,7 @@
 </div>
 <div style="white-space: nowrap; height:300px; width:100%; clear:both">
     <center>
-    <div style="width:49.5%;display:inline-block;margin:1px">
+    <div class="bottom_boxes">
         <div style="background-color:#1DB954"><h2 style="color:#FFFFFF;padding:5px">Top Artists</h2></div>
         <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">1. {{artist1}}</h4></div>
         <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">2. {{artist2}}</h4></div>
@@ -69,7 +69,7 @@
         <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">5. {{artist5}}</h4></div>
     </div>
 
-    <div style="width:49.5%;display:inline-block;float:right;margin:1px">
+    <div class="bottom_boxes">
         <div style="background-color: #FFFFFF"><h2 style="color:#1DB954;padding:5px">Top Genres</h2></div>
         <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">1. {{genre1}}</h4></div>
         <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">2. {{genre2}}</h4></div>
