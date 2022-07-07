@@ -4,3 +4,5 @@ requests
 matplotlib
 numpy
 seaborn
+datetime
+collections

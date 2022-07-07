@@ -32,29 +32,29 @@
 
 <div width=100% style="display:flex">
     <div class="graph_boxes" float="left">
-    <img src="data:image/png;base64, {{ valence_url }}" width=60% height=60% style="vertical-align:top">
-    <center><h3>{{valence_text}} happy</h3>
+    <img src="data:image/png;base64, {{img_urls.valence}}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{feature_texts.valence}} happy</h3>
     <h5>Valence (positivity) describes how happy, cheerful, and euphoric a track feels, while tracks with low valence tend to sound sad, depressed, or angry.</h5></center>
     <br><br><br>
 </div>
 
     <div class="graph_boxes" float="right">
-    <img src="data:image/png;base64, {{ danceability_url }}" width=60% height=60% style="vertical-align:top">
-    <center><h3>{{danceability_text}} danceable</h3>
+    <img src="data:image/png;base64, {{img_urls.danceability}}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{feature_texts.danceability}} danceable</h3>
         <h5>Danceability describes how suitable a track is for dancing based on its tempo, rhythm stability, and beat strength.</h5></center>
     </div>
 </div>
 
 <div width=100% style="display:flex">
     <div class="graph_boxes" float="left">
-    <img src="data:image/png;base64, {{ energy_url }}" width=60% height=60% style="vertical-align:top">
-    <center><h3>{{energy_text}} energetic</h3>
+    <img src="data:image/png;base64, {{img_urls.energy}}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{feature_texts.energy}} energetic</h3>
     <h5>Energy describes how fast, loud, and noisy a track feels. For example, death metal has high energy, while a Bach prelude scores low on the scale.</h5></center>
     </div>
 
     <div class="graph_boxes" float="right">
-    <img src="data:image/png;base64, {{acousticness_url}}" width=60% height=60% style="vertical-align:top">
-    <center><h3>{{acousticness_text}} acoustic</h3>
+    <img src="data:image/png;base64, {{img_urls.acousticness}}" width=60% height=60% style="vertical-align:top">
+    <center><h3>{{feature_texts.acousticness}} acoustic</h3>
     <h5>Acousticness describes how many more elements of a song are acoustic, as opposed to electric. Songs with a higher score are more likely to be acoustic.</h5></center>
     </div>
 </div>
@@ -62,20 +62,20 @@
     <center>
     <div class="bottom_boxes">
         <div style="background-color:#1DB954"><h2 style="color:#FFFFFF;padding:5px">Top Artists</h2></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">1. {{artist1}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">2. {{artist2}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">3. {{artist3}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">4. {{artist4}}</h4></div>
-        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">5. {{artist5}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">1. {{artists.1}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">2. {{artists.2}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">3. {{artists.3}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">4. {{artists.4}}</h4></div>
+        <div style="background-color: #1DB954"><h4 style="color:#FFFFFF;padding:5px">5. {{artists.5}}</h4></div>
     </div>
 
     <div class="bottom_boxes">
         <div style="background-color: #FFFFFF"><h2 style="color:#1DB954;padding:5px">Top Genres</h2></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">1. {{genre1}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">2. {{genre2}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">3. {{genre3}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">4. {{genre4}}</h4></div>
-        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">5. {{genre5}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">1. {{genres.1}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">2. {{genres.2}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">3. {{genres.3}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">4. {{genres.4}}</h4></div>
+        <div style="background-color: #FFFFFF"><h4 style="color:#1DB954;padding:5px">5. {{genres.5}}</h4></div>
     </div>
     </center>
 </div>
